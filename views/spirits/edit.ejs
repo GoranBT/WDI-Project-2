@@ -1,0 +1,26 @@
+<div class="container">
+  <form method="POST" action="/spirits/<%= spirit.id %>">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" value="<%= spirit.name %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input class="input" name="image" type="text" placeholder="Image" value="<%= spirit.image %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Tasting Notes</label>
+      <div class="control">
+        <textarea class="textarea" name="description" placeholder="Tasting Notes"><%= spirit.description %></textarea>
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+  </form>
+</div>

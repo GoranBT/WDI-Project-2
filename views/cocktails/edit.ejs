@@ -1,0 +1,32 @@
+<div class="container">
+  <form method="POST" action="/cocktails/<%= cocktail.id %>">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" value="<%= cocktail.name %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input class="input" name="image" type="text" placeholder="Image" value="<%= cocktail.image %>">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Recipe</label>
+      <div class="control">
+        <textarea class="textarea" name="recipe" placeholder="Tasting Notes"><%= cocktail.recipe %></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea class="textarea" name="description" placeholder="Tasting Notes"><%= cocktail.recipe %></textarea>
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+  </form>
+</div>
