@@ -23,7 +23,7 @@ router.route('/cocktails/:id/edit')
 
 router.post('/cocktails/:id/comments', cocktails.commentsCreate);
 
-router.route('/films/:id/comments/:commentId')
+router.route('/cocktails/:id/comments/:commentId')
   .delete(cocktails.commentsDelete);
 
 router.route('/spirits')
