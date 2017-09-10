@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const commentsSchema = mongoose.Schema({
   commentor: String,
   comment: String,
-  rating: Number
+  rating: Number,
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 const cocktalSchema = new mongoose.Schema({

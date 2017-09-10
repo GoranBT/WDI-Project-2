@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
 
-const { port, dbURI} = require('./config/environment');
+const { port, dbURI, secret} = require('./config/environment');
 const expressLayouts  = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const session = require('express-session');
+
+const flash = require('express-flash');
+const userAuth = require('./lib/userAuth.js');
 
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -22,6 +26,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(morgan('dev'));
 
+app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride(req => {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -31,9 +36,15 @@ app.use(methodOverride(req => {
   }
 }));
 
+app.use(session({
+  secret: secret,
+  resave: false,
+  saveinitialized: false
+}));
 
+app.use(flash());
 
-
+app.use(userAuth);
 
 app.use(routes);
 

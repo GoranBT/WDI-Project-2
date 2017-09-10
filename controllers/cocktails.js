@@ -41,6 +41,7 @@ function cocktailcreate(req, res) {
 
   Cocktail
     .create(req.body)
+    .populate('mainSpirit')
     .then(() => res.redirect('/cocktails'))
     .catch(err => res.render('error', { err }));
 }
@@ -50,6 +51,7 @@ function cocktailcreate(req, res) {
 function cocktailEditForm(req, res) {
   Cocktail
     .findById(req.params.id)
+    .populate('mainSpirit')
     .exec()
     .then(cocktail => res.render('cocktails/edit', { cocktail }))
     .catch(err => res.render('error', { err }));
@@ -60,6 +62,7 @@ function cocktailEditForm(req, res) {
 function cocktailUpdate(req, res) {
   Cocktail
     .findById(req.params.id)
+    .populate('mainSpirit')
     .exec()
     .then(cocktail => {
       cocktail = Object.assign(cocktail, req.body);

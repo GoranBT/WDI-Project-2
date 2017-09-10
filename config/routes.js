@@ -51,12 +51,16 @@ router.route('/spirits/:id/edit')
 // Register
 
 router.route('/register')
-  .get(registrations.new);
+  .get(registrations.new)
+  .post(registrations.create);
 
 // Log In
 
 router.route('/login')
-  .get(sessions.new);
+  .get(sessions.new)
+  .post(sessions.create);
+
+router.get('/logout', sessions.delete);
 
 
 
