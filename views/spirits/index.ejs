@@ -1,5 +1,15 @@
+<div class="container">
+  <div class="columns is-multiline">
 
 <% spirits.forEach((spirit) => { %>
+  <div class="column is-one-quarter box">
   <a href="/spirits/<%= spirit.id %>"><img src="<%= spirit.image %>" alt="<%= spirit.descripton %> "></a>
-  <h1 class="title is-5"><%= spirit.name %> <%= spirit.description %></h1>
+
+  <p><%= spirit.name %></p>
+   <p><%= spirit.description %></p>
+
+  </div>
 <% }) %>
+
+</div>
+</div>

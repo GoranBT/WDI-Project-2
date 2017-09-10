@@ -2,6 +2,9 @@ img {
   width: 200px;
   height: 200px;
 }
+.navbar {
+  border-bottom: 2px solid gray;
+}
 .logo {
   width: 70px;
   height: 70px;
@@ -11,5 +14,11 @@ body {
   color: tomato;
 }
 .container {
-  padding-top: 30px;
+  padding-top: 60px;
+}
+p {
+  font-size: 12px;
+}
+.column {
+  padding: 5px;
 }
