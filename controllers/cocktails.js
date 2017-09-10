@@ -1,5 +1,8 @@
 const Cocktail = require('../models/cocktails');
 
+
+// cocktail index page
+
 function cocktailIndex(req, res) {
   Cocktail
     .find()
@@ -13,6 +16,8 @@ function cocktailIndex(req, res) {
     });
 }
 
+// cocktail show page
+
 function cocktailShow(req, res) {
   Cocktail
     .findById(req.params.id)
@@ -22,10 +27,13 @@ function cocktailShow(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+// cocktail show form
+
 function cocktailShowForm (req, res) {
   res.render('cocktails/new');
 }
 
+// cocktail create cocktail
 
 function cocktailcreate(req, res) {
 
@@ -36,6 +44,9 @@ function cocktailcreate(req, res) {
     .then(() => res.redirect('/cocktails'))
     .catch(err => res.render('error', { err }));
 }
+
+// Edit cocktail
+
 function cocktailEditForm(req, res) {
   Cocktail
     .findById(req.params.id)
@@ -43,6 +54,8 @@ function cocktailEditForm(req, res) {
     .then(cocktail => res.render('cocktails/edit', { cocktail }))
     .catch(err => res.render('error', { err }));
 }
+
+// update
 
 function cocktailUpdate(req, res) {
   Cocktail
@@ -56,6 +69,8 @@ function cocktailUpdate(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+// delete
+
 function cocktailDelete(req, res) {
   Cocktail
     .findById(req.params.id)
@@ -64,6 +79,8 @@ function cocktailDelete(req, res) {
     .then(() => res.redirect('/cocktails'))
     .catch(err => res.render('error', { err }));
 }
+
+// Cocktails comments functions
 
 function cocktailCommentsDelete(req, res) {
   Cocktail
@@ -97,7 +114,7 @@ function cocktailCommentsCreate(req, res) {
 
 
 
-
+// exporting functions
 
 module.exports = {
   index: cocktailIndex,

@@ -1,5 +1,8 @@
 const Spirit = require('../models/spirits');
 
+// spirits index page
+
+
 function index(req, res) {
   Spirit
     .find()
@@ -13,6 +16,9 @@ function index(req, res) {
       res.status(500).render('error', { err });
     });
 }
+
+// spirits show page
+
 function show(req, res) {
   Spirit
     .findById(req.params.id)
@@ -22,10 +28,13 @@ function show(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+// spirits show form
+
 function showForm (req, res) {
   res.render('spirits/new');
 }
 
+// spirits create new spirit
 
 function create(req, res) {
 
@@ -36,6 +45,9 @@ function create(req, res) {
     .then(() => res.redirect('/spirits'))
     .catch(err => res.render('error', { err }));
 }
+
+// spirits edit form
+
 function editForm(req, res) {
   Spirit
     .findById(req.params.id)
@@ -44,6 +56,7 @@ function editForm(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+//spirits update
 function update(req, res) {
   Spirit
     .findById(req.params.id)
@@ -55,6 +68,7 @@ function update(req, res) {
     .then(spirit => res.redirect(`/spirits/${spirit.id}`))
     .catch(err => res.render('error', { err }));
 }
+// spirits delete function
 
 function itemDelete(req, res) {
   Spirit
@@ -66,7 +80,7 @@ function itemDelete(req, res) {
 }
 
 
-
+//exporting functions
 
 
 module.exports = {
