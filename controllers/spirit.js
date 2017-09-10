@@ -16,7 +16,7 @@ function index(req, res) {
 function show(req, res) {
   Spirit
     .findById(req.params.id)
-    .populate('user')
+    .populate('mainSpirit')
     .exec()
     .then(spirit => res.render('spirits/show', { spirit }))
     .catch(err => res.render('error', { err }));

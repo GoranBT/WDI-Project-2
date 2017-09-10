@@ -65,6 +65,36 @@ function cocktailDelete(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+function cocktailCommentsDelete(req, res) {
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then(cocktail => {
+      const comment = cocktail.comments.id(req.params.commentId);
+      console.log(comment);
+      comment.remove();
+      return cocktail.save();
+    })
+    .then(cocktail => res.redirect(`/cocktails/${cocktail.id}`))
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
+function cocktailCommentsCreate(req, res) {
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then(cocktail => {
+      cocktail.comments.push(req.body);
+      return cocktail.save();
+    })
+    .then(cocktail => res.redirect(`/cocktails/${cocktail.id}`))
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
 
 
 
@@ -76,5 +106,7 @@ module.exports = {
   create: cocktailcreate,
   edit: cocktailEditForm,
   update: cocktailUpdate,
-  delete: cocktailDelete
+  delete: cocktailDelete,
+  commentsDelete: cocktailCommentsDelete,
+  commentsCreate: cocktailCommentsCreate
 };

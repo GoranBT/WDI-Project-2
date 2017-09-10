@@ -1,4 +1,24 @@
-<h1>show</h1>
- 
-  <a href="/spirits/<%= spirit.id %>"><img src="<%= spirit.image %>" alt="<%= spirit.descripton %> "></a>
-  <h1 class="title is-5"><%= spirit.name %> <%= spirit.description %></h1>
+<section class="section">
+  <div class="container">
+    <div class="box columns">
+      <div class="column is-half">
+        <img src="<%= spirit.image %>" alt="<%= spirit.name %>">
+      </div>
+      <div class="column is-half">
+        <h1 class="title"><%= spirit.name %></h1>
+        <p><%= spirit.description %></p>
+        <div class="columns">
+          <div class="column is-half">
+            <a class="button is-info" href="/spirits/<%= spirit.id %>/edit">Edit</a>
+          </div>
+          <div class="column is-half">
+            <form action="/spirits/<%= spirit.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="button is-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
