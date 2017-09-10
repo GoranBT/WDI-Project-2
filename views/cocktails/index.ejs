@@ -1,15 +1,11 @@
-
 <div class="container">
-
-<div class="columns is-multiline">
-
-
-<% cocktails.forEach((cocktail) => { %>
-  <div class="column is-one-quarter box"
-  <a href="/cocktails/<%= cocktail.id %>"><img src="<%= cocktail.image %>" alt="<%= cocktail.descripton %>"></a>
-  <p><%= cocktail.name %></p>
-  <p><%= cocktail.description %></p>
+  <div class="columns is-multiline">
+    <% cocktails.forEach((cocktail) => { %>
+      <div class="column is-one-quarter box ">
+        <a href="/cocktails/<%= cocktail.id %>"><img src="<%= cocktail.image %>" alt="<%= cocktail.descripton %>"></a>
+        <p><%= cocktail.name %></p>
+        <p><%= cocktail.description %></p>
+      </div>
+    <% }) %>
   </div>
-<% }) %>
-</div>
 </div>
