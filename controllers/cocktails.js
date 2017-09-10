@@ -41,7 +41,6 @@ function cocktailcreate(req, res) {
 
   Cocktail
     .create(req.body)
-    .populate('mainSpirit')
     .then(() => res.redirect('/cocktails'))
     .catch(err => res.render('error', { err }));
 }

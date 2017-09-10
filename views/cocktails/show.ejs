@@ -3,13 +3,18 @@
     <div class="box columns">
       <div class="column is-half">
         <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
-      </div>
-      <div class="column is-half">
-        <h1 class="title"><%= cocktail.name %></h1>
-        <p class="subtitle"><%= cocktail.mainSpirit.name %></p>
-        <p><%= cocktail.recipe %></p>
-        <p><%= cocktail.description %></p>
 
+        <h1 class="title"><%= cocktail.name %></h1>
+        <label>Main Spirit</label>
+        <p class="subtitle"><%= cocktail.mainSpirit.name %></p>
+        <div class="box">
+        <p>Recipe</p>
+        <p><%= cocktail.recipe %></p>
+        </div>
+        <div class="box">
+        <p>Description</p>
+        <p><%= cocktail.description %></p>
+      </div>
         <div class="columns">
           <div class="column is-half">
             <a class="button is-info" href="/cocktails/<%= cocktail.id %>/edit">Edit</a>
@@ -21,6 +26,8 @@
             </form>
           </div>
         </div>
+      </div>
+        <div class="column is-half">
         <div>
           <% cocktail.comments.forEach((comment) => { %>
             <div class="box">
