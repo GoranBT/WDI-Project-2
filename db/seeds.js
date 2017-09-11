@@ -10,6 +10,8 @@ const Cocktail = require('../models/cocktails');
 Spirit.collection.drop();
 Cocktail.collection.drop();
 
+//Spirits
+
 Spirit
   .create([{
     name: 'Vodka',
@@ -34,7 +36,7 @@ Spirit
   }
   ])
   .then((spirits)=>{
-    console.log(`${spirits.length} spirits have been created!`);
+    console.log(`${spirits.length} spirits have been created!`);  // Creating cocktails
     return Cocktail.create([
       {name: 'Sex on the beach', mainSpirit: spirits[0], image: 'https://mmac-geckowebdevelopm1.netdna-ssl.com/images/cocktails/6798/300_450_sex_on_the_breach_2.jpg', description: 'The Sex on the Beach cocktail is a very popular mixed drink which is the epitome of easy drinking.', recipe: '25 ml Vodka / 25 ml Peach Schnapps / 40 ml Orange Juice / 20 ml Cranberry Juice / Orange Slice for Garnish'},
       {name: 'Espresso Martini', mainSpirit: spirits[0], image: 'https://cdn.diffordsguide.com/contrib/stock-images/2016/11/05/20160dd6bb782c07f1176350bf71134f9ede.jpg', description: 'A silky smooth martini with that caffeinated kick to keep the night going that extra hour longer!', recipe: '37 1/2 ml Vanilla Vodka, 12 1/2 ml Kahlúa, Double Espresso, 12 1/2 ml Sugar Syrup, 3 Coffee Beans'},

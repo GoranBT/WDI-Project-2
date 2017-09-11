@@ -1,24 +1,32 @@
-<div class="container">
-  <div class="columns">
-    <div class="column is-half">
 
-  <form method="POST" action="/login">
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
-        <input class="input" name="email" type="text" placeholder="Email">
+<div class="columns">
+  <div class="column is-half">
+
+    <form method="POST" action="/login">
+
+      <%# Email%>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" name="email" type="text" placeholder="Email">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Password</label>
-      <div class="control">
-        <input class="input" name="password" type="password" placeholder="Password">
+
+      <%# Password%>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" name="password" type="password" placeholder="Password">
+        </div>
       </div>
-    </div>
-    <div class="control">
-      <button class="button is-primary">Login</button>
-    </div>
-  </form>
-</div>
-</div>
+
+      <%# Login button%>
+
+      <div class="control">
+        <button class="button is-primary">Login</button>
+      </div>
+    </form>
+  </div>
 </div>

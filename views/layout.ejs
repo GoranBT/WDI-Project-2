@@ -5,17 +5,29 @@
     <title>MixIT</title>
     <%- include ./partials/_stylesheets %>
   </head>
+
   <body>
+
+    <%# include navbar%>
     <%- include ./partials/_navbar %>
+
     <% if(!locals.isHomepage) { %><main class="section"><% } %>
     <% for (const type in messages) { %>
       <p class="notification is-<%= type %>"><%= messages[type] %></p>
     <% } %>
+
+    <%# bulma container%>
     <main class="container">
+
     <%- body %>
+
     </main>
+
     <% if(!locals.isHomepage) { %></main><% } %>
-  <%- include ./partials/_scripts %>
+
+    <%# include scripts%>
+    <%- include ./partials/_scripts %>
     <%- include ./partials/_scripts %>
   </body>
+
 </html>

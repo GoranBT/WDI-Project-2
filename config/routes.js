@@ -65,6 +65,8 @@ router.route('/login')
 
 router.get('/logout', sessions.delete);
 
+// User
+
 router.route('/users/:id')
   .get(users.show);
 

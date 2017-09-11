@@ -1,25 +1,37 @@
 
-  <form method="POST" action="/spirits/<%= spirit.id %>">
-    <input type="hidden" name="_method" value="PUT">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" name="name" type="text" placeholder="Name" value="<%= spirit.name %>">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Image</label>
-      <div class="control">
-        <input class="input" name="image" type="text" placeholder="Image" value="<%= spirit.image %>">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Tasting Notes</label>
-      <div class="control">
-        <textarea class="textarea" name="description" placeholder="Tasting Notes"><%= spirit.description %></textarea>
-      </div>
-    </div>
+<form method="POST" action="/spirits/<%= spirit.id %>">
+  <input type="hidden" name="_method" value="PUT">
+
+  <%# Name%>
+
+  <div class="field">
+    <label class="label">Name</label>
     <div class="control">
-      <button class="button is-primary">Submit</button>
+      <input class="input" name="name" type="text" placeholder="Name" value="<%= spirit.name %>">
     </div>
-  </form>
+  </div>
+
+  <%# Image%>
+
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <input class="input" name="image" type="text" placeholder="Image" value="<%= spirit.image %>">
+    </div>
+  </div>
+
+  <%# Description%>
+
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea class="textarea" name="description" placeholder="description"><%= spirit.description %></textarea>
+    </div>
+  </div>
+
+  <%# Submit button%>
+
+  <div class="control">
+    <button class="button is-primary">Submit</button>
+  </div>
+</form>

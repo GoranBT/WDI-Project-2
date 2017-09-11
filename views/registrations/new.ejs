@@ -1,35 +1,49 @@
-<div class="container">
-  <div class="columns">
-    <div class="column is-two-thirds">
-  <form method="POST" action="/register">
-    <div class="field">
-      <label class="label">Username</label>
-      <div class="control">
-        <input class="input" name="username" type="text" placeholder="Username" required>
+
+<div class="columns">
+  <div class="column is-two-thirds">
+    <form method="POST" action="/register">
+
+      <%# Username%>
+
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input class="input" name="username" type="text" placeholder="Username" required>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
-        <input class="input" name="email" type="text" placeholder="Email" required>
+
+      <%# Email%>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" name="email" type="text" placeholder="Email" required>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Password</label>
-      <div class="control">
-        <input class="input" name="password" type="password" placeholder="Password" required>
+
+      <%# Password%>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" name="password" type="password" placeholder="Password" required>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Confirm Password</label>
-      <div class="control">
-        <input class="input" name="passwordConfirmation" type="password" placeholder="Confirm Password" required>
+
+      <%# Confirm Password%>
+
+      <div class="field">
+        <label class="label">Confirm Password</label>
+        <div class="control">
+          <input class="input" name="passwordConfirmation" type="password" placeholder="Confirm Password" required>
+        </div>
       </div>
-    </div>
-    <div class="control">
-      <button class="button is-primary">Register</button>
-    </div>
-  </form>
-</div>
-</div>
+
+      <%# Register button%>
+
+      <div class="control">
+        <button class="button is-primary">Register</button>
+      </div>
+    </form>
+  </div>
 </div>

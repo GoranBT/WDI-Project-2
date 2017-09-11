@@ -1,42 +1,41 @@
+<div class="box columns is multiline">
+  <div class="column">
+    <img src="<%= spirit.image %>" alt="<%= spirit.name %>">
+  </div>
+  <div class="column">
+    <h1 class="title"><%= spirit.name %></h1>
+    <p><%= spirit.description %></p>
+  </div>
+  <div class="column">
+    <% if(spirit.user) { %>
+      <p>Added by: <strong> <%= spirit.user.username %></strong></p>
+    <% } %>
+    <br>
+    <% if(locals.isAuthenticated && spirit.user && spirit.user.id === locals.currentUser.id) { %>
+      <form method="POST" action="/spirits/<%= spirit.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a class="button is-primary" href="/spirits/<%= spirit.id %>/edit">Edit</a>
+        <button class="button is-danger">Delete</button>
+      </form>
+    <% } %>
+  </div>
+</div>
 
-    <div class="box columns is multiline">
-      <div class="column">
-        <img src="<%= spirit.image %>" alt="<%= spirit.name %>">
+<% spirit.cocktails.forEach(cocktail => { %>
+  <div class="column is-one-quarter-desktop is-half-tablet">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <a href="/cocktails/<%= cocktail.id %>"><img src="<%= cocktail.image %>"></a>
+        </figure>
       </div>
-      <div class="column">
-        <h1 class="title"><%= spirit.name %></h1>
-        <p><%= spirit.description %></p>
-        </div>
-        <div class="column">
-          <% if(spirit.user) { %>
-                <p>Added by: <strong> <%= spirit.user.username %></strong></p>
-                <% } %>
-                <br>
-                <% if(locals.isAuthenticated && spirit.user && spirit.user.id === locals.currentUser.id) { %>
-                <form method="POST" action="/spirits/<%= spirit.id %>">
-                  <input type="hidden" name="_method" value="DELETE">
-                  <a class="button is-primary" href="/spirits/<%= spirit.id %>/edit">Edit</a>
-                  <button class="button is-danger">Delete</button>
-                </form>
-                <% } %>
-          </div>
-      </div>
-
-      <% spirit.cocktails.forEach(cocktail => { %>
-      <div class="column is-one-quarter-desktop is-half-tablet">
-      <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-            <a href="/cocktails/<%= cocktail.id %>"><img src="<%= cocktail.image %>"></a>
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-5"><a href="/cocktail/<%= cocktail.id %>"><%= cocktail.name %></a></p>
-              </div>
-            </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-5"><a href="/cocktail/<%= cocktail.id %>"><%= cocktail.name %></a></p>
           </div>
         </div>
       </div>
-      <% }) %>
+    </div>
+  </div>
+<% }) %>

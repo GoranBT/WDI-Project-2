@@ -1,44 +1,61 @@
 
-  <form method="POST" action="/cocktails/<%= cocktail.id %>">
-    <input type="hidden" name="_method" value="PUT">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" name="name" id="title" type="text" placeholder="Name" value="<%= cocktail.name %>">
-      </div>
-    </div>
-    <div class="field">
-      <label for="title">Spirit</label>
-      <div class="control">
-        <div class="select">
-          <select name="mainSpirit">
-            <% spirits.forEach((spirit) => { %>
-              <option value="<%= spirit.id %>" <% if(spirit.id === cocktail.mainSpirit.id) { %> selected <% } %>><%= spirit.name %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-    </div>
+<form method="POST" action="/cocktails/<%= cocktail.id %>">
+  <input type="hidden" name="_method" value="PUT">
 
-    <div class="field">
-      <label class="label">Image</label>
-      <div class="control">
-        <input class="input" name="image" type="text" placeholder="Image" value="<%= cocktail.image %>">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Recipe</label>
-      <div class="control">
-        <textarea class="textarea" name="recipe" placeholder="Recipe"><%= cocktail.recipe %></textarea>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Description</label>
-      <div class="control">
-        <textarea class="textarea" name="description" placeholder="description"><%= cocktail.description %></textarea>
-      </div>
-    </div>
+<%# Name input%>
+
+  <div class="field">
+    <label class="label">Name</label>
     <div class="control">
-      <button class="button is-primary">Submit</button>
+      <input class="input" name="name" id="title" type="text" placeholder="Name" value="<%= cocktail.name %>">
     </div>
-  </form>
+  </div>
+
+<%# Dropdown menu for selecting spirit%>
+
+  <div class="field">
+    <label for="title">Spirit</label>
+    <div class="control">
+      <div class="select">
+        <select name="mainSpirit">
+          <% spirits.forEach((spirit) => { %>
+            <option value="<%= spirit.id %>" <% if(spirit.id === cocktail.mainSpirit.id) { %> selected <% } %>><%= spirit.name %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+  </div>
+
+<%# Image input%>
+
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <input class="input" name="image" type="text" placeholder="Image" value="<%= cocktail.image %>">
+    </div>
+  </div>
+
+<%# Recipe input%>
+
+  <div class="field">
+    <label class="label">Recipe</label>
+    <div class="control">
+      <textarea class="textarea" name="recipe" placeholder="Recipe"><%= cocktail.recipe %></textarea>
+    </div>
+  </div>
+
+<%# Description input%>
+
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea class="textarea" name="description" placeholder="description"><%= cocktail.description %></textarea>
+    </div>
+  </div>
+
+  <%# submit button%>
+
+  <div class="control">
+    <button class="button is-primary">Submit</button>
+  </div>
+</form>

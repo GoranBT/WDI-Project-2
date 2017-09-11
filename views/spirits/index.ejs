@@ -1,21 +1,30 @@
 
 <div class="columns is-multiline">
-<% spirits.forEach(spirit => { %>
-<div class="column is-one-quarter-desktop is-half-tablet">
-<div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-      <a href="/spirits/<%= spirit.id %>"><img src="<%= spirit.image %>"></a>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-5"><a href="/spirits/<%= spirit.id %>"><%= spirit.name %></a></p>
+
+  
+
+  <% spirits.forEach(spirit => { %>
+    <div class="column is-one-quarter-desktop is-half-tablet">
+      <div class="card">
+
+
+
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <a href="/spirits/<%= spirit.id %>"><img src="<%= spirit.image %>"></a>
+          </figure>
+        </div>
+
+
+
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-5"><a href="/spirits/<%= spirit.id %>"><%= spirit.name %></a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<% }) %>
+  <% }) %>
 </div>
