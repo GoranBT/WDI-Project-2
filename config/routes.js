@@ -5,6 +5,7 @@ const spirits = require('../controllers/spirit');
 const cocktails = require('../controllers/cocktails');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
+const users = require('../controllers/users');
 
 //  Home page
 router.get('/', (req, res) => res.render('home'));
@@ -64,7 +65,8 @@ router.route('/login')
 
 router.get('/logout', sessions.delete);
 
-
+router.route('/users/:id')
+  .get(users.show);
 
 
 

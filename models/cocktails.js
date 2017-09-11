@@ -1,20 +1,25 @@
 const mongoose = require('mongoose');
 
-const commentsSchema = mongoose.Schema({
+const commentSchema = mongoose.Schema({
   comment: String,
   rating: Number,
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
-const cocktalSchema = new mongoose.Schema({
+commentSchema.methods.belongsTo = function(user) {
+  if(!user) return false;
+  return user.id === this.user.id;
+};
+
+const cocktailSchema = new mongoose.Schema({
   name: { type: String, required: true },
   image: { type: String, required: true },
   recipe: { type: String, required: true },
   mainSpirit: {type: mongoose.Schema.ObjectId, ref: 'Spirit' },
   description: {type: String, required: true},
-  comments: [commentsSchema],
+  comments: [commentSchema],
   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 
-module.exports = mongoose.model('Cocktail', cocktalSchema);
+module.exports = mongoose.model('Cocktail', cocktailSchema);

@@ -37,6 +37,7 @@
       <div class="column is-half">
 
           <%#making comments section %>
+          <% if(locals.isAuthenticated) { %>
           <div class="form">
             <div class="commentAdder box">
               <form method="POST" action="/cocktails/<%= cocktail.id %>/comments">
@@ -65,12 +66,11 @@
                 </form>
               </div>
             </div>
-
+            <% } %>
                 <% cocktail.comments.forEach((comment) => { %>
 
                 <div class="box">
-
-                  <% if(locals.isAuthenticated && comment.user && comment.user.id === locals.currentUser.id) { %>
+                  <% if(comment.belongsTo(locals.currentUser)) { %>
                   <form action="/cocktails/<%= cocktail.id %>/comments/<%= comment.id %>" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>

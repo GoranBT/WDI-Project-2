@@ -1,13 +1,13 @@
-// const User = require('../models/user');
+const User = require('../models/user');
 //
-// function usersShow(req, res) {
-//   User
-//     .findById(req.params.id)
-//     .populate('cheeses favorites')
-//     .exec()
-//     .then(user => res.render('users/show', { user }))
-//     .catch(err => res.render('error', { err }));
-// }
+function usersShow(req, res) {
+  User
+    .findById(req.params.id)
+    .populate('cheeses favorites')
+    .exec()
+    .then(user => res.render('users/show', { user }))
+    .catch(err => res.render('error', { err }));
+}
 //
 // function usersEdit(req, res) {
 //   User
@@ -36,9 +36,9 @@
 //     .catch(err => res.render('error', { err }));
 // }
 //
-// module.exports = {
-//   show: usersShow,
+module.exports = {
+  show: usersShow
 //   edit: usersEdit,
 //   update: usersUpdate,
 //   delete: usersDelete
-// };
+};
