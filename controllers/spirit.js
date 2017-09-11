@@ -1,4 +1,5 @@
 const Spirit = require('../models/spirits');
+const Cocktail = require('../models/cocktails');
 
 // spirits index page
 
@@ -18,14 +19,21 @@ function index(req, res) {
 }
 
 // spirits show page
-
-function show(req, res) {
+function show (req, res) {
   Spirit
     .findById(req.params.id)
-    .populate('mainSpirit user')
     .exec()
-    .then(spirit => res.render('spirits/show', { spirit }))
-    .catch(err => res.render('error', { err }));
+    .then(spirit => {
+      console.log(spirit);
+      return Cocktail
+        .find({ mainSpirit: spirit.id })
+        .populate('mainSpirit user')
+        .then(cocktails => {
+          console.log('Cocktails:', cocktails);
+          res.render('spirits/show', {spirit, cocktails});
+        });
+    })
+    .catch(err => res.resnder('error', {err}));
 }
 
 // spirits show form
