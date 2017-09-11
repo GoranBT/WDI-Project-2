@@ -7,6 +7,18 @@
         <input class="input" name="name" id="title" type="text" placeholder="Name" value="<%= cocktail.name %>">
       </div>
     </div>
+    <div class="field">
+            <label for="title">Spirit</label>
+            <div class="control">
+              <div class="select">
+                <select name="mainSpirit">
+                  <% spirits.forEach((spirit) => { %>
+                    <option value="<%= spirit.id %>" <% if(spirit.id === cocktail.mainSpirit.id) { %> selected <% } %>><%= spirit.name %></option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+          </div>
 
     <div class="field">
       <label class="label">Image</label>

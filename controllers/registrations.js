@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 function registrationsNew(req, res){
-  res.render('registrations/news');
+  res.render('registrations/new');
 }
 
 function registrationsCreate(req, res) {

@@ -1,5 +1,5 @@
 const Cocktail = require('../models/cocktails');
-
+const Spirit = require('../models/spirits');
 
 // cocktail index page
 
@@ -30,7 +30,17 @@ function cocktailShow(req, res) {
 // cocktail show form
 
 function cocktailShowForm (req, res) {
-  res.render('cocktails/new');
+  Spirit
+    .find()
+    .exec()
+    .then((spirits) => {
+      res.render('cocktails/new', { spirits });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+
+
 }
 
 // cocktail create cocktail
@@ -52,8 +62,24 @@ function cocktailEditForm(req, res) {
     .findById(req.params.id)
     .populate('mainSpirit')
     .exec()
-    .then(cocktail => res.render('cocktails/edit', { cocktail }))
-    .catch(err => res.render('error', { err }));
+    .then((cocktail) => {
+      if(!cocktail) return res.status(404).send('Not found');
+      return Spirit
+        .find()
+        .exec()
+        .then((spirits) => {
+          res.render('cocktails/edit', {cocktail, spirits});
+        })
+        .catch((err) => {
+          res.status(500).render('error', { err });
+        });
+    });
+  // Cocktail
+  //   .findById(req.params.id)
+  //   .populate('mainSpirit')
+  //   .exec()
+  //   .then(cocktail => res.render('cocktails/edit', { cocktail }))
+  //   .catch(err => res.render('error', { err }));
 }
 
 // update

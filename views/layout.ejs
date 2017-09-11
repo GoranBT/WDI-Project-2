@@ -7,7 +7,13 @@
   </head>
   <body>
     <%- include ./partials/_navbar %>
+    <% if(!locals.isHomepage) { %><main class="section"><% } %>
+    <% for (const type in messages) { %>
+      <p class="notification is-<%= type %>"><%= messages[type] %></p>
+    <% } %>
     <%- body %>
+    <% if(!locals.isHomepage) { %></main><% } %>
+  <%- include ./partials/_scripts %>
     <%- include ./partials/_scripts %>
   </body>
 </html>

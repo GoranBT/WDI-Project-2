@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const secureRoute = require('../lib/secureRoute');
+
 const spirits = require('../controllers/spirit');
 const cocktails = require('../controllers/cocktails');
 const registrations = require('../controllers/registrations');
@@ -10,18 +12,18 @@ router.get('/', (req, res) => res.render('home'));
 // Cocktails routes
 router.route('/cocktails')
   .get(cocktails.index)
-  .post(cocktails.create);
+  .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/new')
-  .get(cocktails.new);
+  .get(secureRoute, cocktails.new);
 
 router.route('/cocktails/:id')
   .get(cocktails.show)
-  .put(cocktails.update)
-  .delete(cocktails.delete);
+  .put(secureRoute, cocktails.update)
+  .delete(secureRoute, cocktails.delete);
 
 router.route('/cocktails/:id/edit')
-  .get(cocktails.edit);
+  .get(secureRoute, cocktails.edit);
 
 // Comments  routes
 router.post('/cocktails/:id/comments', cocktails.commentsCreate);
@@ -34,18 +36,18 @@ router.route('/cocktails/:id/comments/:commentId')
 
 router.route('/spirits')
   .get(spirits.index)
-  .post(spirits.create);
+  .post(secureRoute, spirits.create);
 
 router.route('/spirits/new')
-  .get(spirits.new);
+  .get(secureRoute, spirits.new);
 
 router.route('/spirits/:id')
   .get(spirits.show)
-  .put(spirits.update)
-  .delete(spirits.delete);
+  .put(secureRoute, spirits.update)
+  .delete(secureRoute, spirits.delete);
 
 router.route('/spirits/:id/edit')
-  .get(spirits.edit);
+  .get(secureRoute, spirits.edit);
 
 
 // Register

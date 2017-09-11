@@ -1,2 +1,10 @@
-"use strict";var $burger=$(".navbar-burger"),$menu=$(".navbar-menu");$burger.on("click",function(){$burger.toggleClass("is-active"),$menu.toggleClass("is-active")});
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5qcyJdLCJuYW1lcyI6WyIkYnVyZ2VyIiwiJCIsIiRtZW51IiwidG9nZ2xlQ2xhc3MiLCJvbiJdLCJtYXBwaW5ncyI6ImFBQUEsSUFBTUEsUUFBVUMsRUFBRSxrQkFDWkMsTUFBUUQsRUFBRSxnQkFBaEJELFFBQU1FLEdBQUFBLFFBQVUsV0FHZEYsUUFBUUcsWUFBWSxhQUR0QkgsTUFBUUksWUFBWSIsImZpbGUiOiJhcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCAkYnVyZ2VyID0gJCgnLm5hdmJhci1idXJnZXInKTtcbmNvbnN0ICRtZW51ID0gJCgnLm5hdmJhci1tZW51Jyk7XG5cbiRidXJnZXIub24oJ2NsaWNrJywgKCkgPT4ge1xuICAkYnVyZ2VyLnRvZ2dsZUNsYXNzKCdpcy1hY3RpdmUnKTtcbiAgJG1lbnUudG9nZ2xlQ2xhc3MoJ2lzLWFjdGl2ZScpO1xufSk7XG4iXX0=
+const $burger = $('.navbar-burger');
+const $menu = $('.navbar-menu');
+const $form = $('form');
+
+$burger.on('click', () => {
+  $burger.toggleClass('is-active');
+  $menu.toggleClass('is-active');
+});
+
+if($form.length > 0) $form.validate();
