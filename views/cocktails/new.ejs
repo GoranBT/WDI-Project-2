@@ -1,19 +1,16 @@
 
-<div class="container">
+
   <div class="columns">
     <div class="column is-half">
+      <form method="POST" action="/cocktails">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" name="name" type="text" placeholder="Name" required>
+          </div>
+        </div>
+        <div class="field">
 
-
-
-  <form method="POST" action="/cocktails">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" name="name" type="text" placeholder="Name" required>
-      </div>
-    </div>
-    <div class="field">
-          <label for="title">Spirit</label>
           <div class="control">
             <div class="select">
               <select name="mainSpirit">
@@ -49,4 +46,3 @@
   </form>
   </div>
   </div>
-</div>

@@ -22,7 +22,7 @@ function index(req, res) {
 function show(req, res) {
   Spirit
     .findById(req.params.id)
-    .populate('mainSpirit')
+    .populate('mainSpirit user')
     .exec()
     .then(spirit => res.render('spirits/show', { spirit }))
     .catch(err => res.render('error', { err }));
@@ -31,7 +31,16 @@ function show(req, res) {
 // spirits show form
 
 function showForm (req, res) {
-  res.render('spirits/new');
+  Spirit
+    .find()
+    .exec()
+    .then((spirits) => {
+      res.render('spirits/new', { spirits });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+
 }
 
 // spirits create new spirit
@@ -54,6 +63,8 @@ function editForm(req, res) {
     .exec()
     .then(spirit => res.render('spirits/edit', { spirit }))
     .catch(err => res.render('error', { err }));
+
+
 }
 
 //spirits update

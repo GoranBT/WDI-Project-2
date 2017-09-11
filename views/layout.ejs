@@ -11,7 +11,9 @@
     <% for (const type in messages) { %>
       <p class="notification is-<%= type %>"><%= messages[type] %></p>
     <% } %>
+    <main class="container">
     <%- body %>
+    </main>
     <% if(!locals.isHomepage) { %></main><% } %>
   <%- include ./partials/_scripts %>
     <%- include ./partials/_scripts %>

@@ -1,13 +1,13 @@
-<section class="section">
-  <div class="container">
-    <div class="box columns">
-      <div class="column is-half">
+
+    <div class="box columns is multiline">
+      <div class="column">
         <img src="<%= spirit.image %>" alt="<%= spirit.name %>">
       </div>
-      <div class="column is-half">
+      <div class="column">
         <h1 class="title"><%= spirit.name %></h1>
         <p><%= spirit.description %></p>
-        <div class="columns">
+        </div>
+        <div class="column">
           <% if(spirit.user) { %>
                 <p>Added by: <strong> <%= spirit.user.username %></strong></p>
                 <% } %>
@@ -20,7 +20,6 @@
                 </form>
                 <% } %>
           </div>
-        </div>
       </div>
-    </div>
-</section>
+
+      

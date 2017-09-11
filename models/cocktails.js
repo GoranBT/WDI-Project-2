@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const commentsSchema = mongoose.Schema({
-  commentor: String,
   comment: String,
   rating: Number,
-  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
 const cocktalSchema = new mongoose.Schema({
@@ -13,7 +12,8 @@ const cocktalSchema = new mongoose.Schema({
   recipe: { type: String, required: true },
   mainSpirit: {type: mongoose.Schema.ObjectId, ref: 'Spirit' },
   description: {type: String, required: true},
-  comments: [commentsSchema]
+  comments: [commentsSchema],
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 

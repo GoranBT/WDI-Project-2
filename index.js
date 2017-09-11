@@ -38,7 +38,7 @@ app.use(methodOverride(req => {
 app.use(session({
   secret: secret,
   resave: false,
-  saveinitialized: false
+  saveUninitialized: false
 }));
 
 app.use(flash());

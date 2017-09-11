@@ -21,7 +21,7 @@ function cocktailIndex(req, res) {
 function cocktailShow(req, res) {
   Cocktail
     .findById(req.params.id)
-    .populate('mainSpirit')
+    .populate('mainSpirit user comments.user')
     .exec()
     .then(cocktail => res.render('cocktails/show', { cocktail }))
     .catch(err => res.render('error', { err }));
@@ -29,7 +29,7 @@ function cocktailShow(req, res) {
 
 // cocktail show form
 
-function cocktailShowForm (req, res) {
+function cocktailNew (req, res) {
   Spirit
     .find()
     .exec()
@@ -45,7 +45,7 @@ function cocktailShowForm (req, res) {
 
 // cocktail create cocktail
 
-function cocktailcreate(req, res) {
+function cocktailCreate(req, res) {
 
   req.body.user = req.currentUser;
 
@@ -127,6 +127,7 @@ function cocktailCommentsDelete(req, res) {
 }
 
 function cocktailCommentsCreate(req, res) {
+  req.body.user = req.currentUser;
   Cocktail
     .findById(req.params.id)
     .exec()
@@ -147,8 +148,8 @@ function cocktailCommentsCreate(req, res) {
 module.exports = {
   index: cocktailIndex,
   show: cocktailShow,
-  new: cocktailShowForm,
-  create: cocktailcreate,
+  new: cocktailNew,
+  create: cocktailCreate,
   edit: cocktailEditForm,
   update: cocktailUpdate,
   delete: cocktailDelete,
