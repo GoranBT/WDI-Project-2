@@ -1,87 +1,100 @@
 
-    <div class="box columns">
+<div class="box columns">
 
-      <%# left column%>
+  <%# left column%>
 
-      <div class="column is-half">
-        <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
-        <h1 class="title"><%= cocktail.name %></h1>
+  <div class="column is-half">
+    <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
+    <h1 class="title"><%= cocktail.name %></h1>
 
-        <label>Main Spirit</label>
+    <label>Main Spirit</label>
 
-          <p class="subtitle"><%= cocktail.mainSpirit.name %></p>
-        <div class="box">
-          <p>Recipe</p>
-          <p><%= cocktail.recipe %></p>
+      <p class="subtitle"><%= cocktail.mainSpirit.name %></p>
+    <div class="box">
+      <p>Recipe</p>
+      <p><%= cocktail.recipe %></p>
+    </div>
+    <div class="box">
+      <p>Description</p>
+      <p><%= cocktail.description %></p>
+    </div>
+
+    <% if(cocktail.user) { %>
+      <p>Added by: <strong> <%= cocktail.user.username %></strong></p>
+    <% } %>
+    <br>
+    <% if(locals.isAuthenticated && cocktail.user && cocktail.user.id === locals.currentUser.id) { %>
+      <form method="POST" action="/cocktails/<%= cocktail.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a class="button is-primary" href="/cocktails/<%= cocktail.id %>/edit">Edit</a>
+        <button class="button is-danger">Delete</button>
+      </form>
+    <% } %>
+  </div>
+
+  <%# right column%>
+
+  <div class="column is-half">
+
+    <%#making comments section %>
+    <% if(locals.isAuthenticated) { %>
+      <div class="form">
+        <div class="commentAdder box">
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/comments">
+
+            <div class="field">
+              <label class="label" for="comment">Your comment:</label>
+                <div class="control">
+                  <textarea class="textarea" rows="3" name="comment"></textarea>
+                  </div>
+                  </div>
+                  <div class="field">
+                  <label class="label" for="rating">Your rating</lable>
+                  <div class="control">
+                  <div class="select">
+                    <select name="rating">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            <button class="button is-info">Submit</button>
+          </form>
         </div>
-        <div class="box">
-          <p>Description</p>
-          <p><%= cocktail.description %></p>
-        </div>
+      </div>
+    <% } %>
 
-        <% if(cocktail.user) { %>
-          <p>Added by: <strong> <%= cocktail.user.username %></strong></p>
-        <% } %>
-        <br>
-        <% if(locals.isAuthenticated && cocktail.user && cocktail.user.id === locals.currentUser.id) { %>
-        <form method="POST" action="/cocktails/<%= cocktail.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <a class="button is-primary" href="/cocktails/<%= cocktail.id %>/edit">Edit</a>
-          <button class="button is-danger">Delete</button>
+    <div class="box">
+
+      <% cocktail.comments.forEach((comment) => { %>
+        <% if(comment.belongsTo(locals.currentUser)) { %>
+          <form action="/cocktails/<%= cocktail.id %>/comments/<%= comment.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="is-pulled-right"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </form>
         <% } %>
-      </div>
-
-      <%# right column%>
-
-      <div class="column is-half">
-
-          <%#making comments section %>
-          <% if(locals.isAuthenticated) { %>
-          <div class="form">
-            <div class="commentAdder box">
-              <form method="POST" action="/cocktails/<%= cocktail.id %>/comments">
-
-                <div class="field">
-                  <label class="label" for="comment">Your comment:</label>
-                  <div class="control">
-                    <textarea class="textarea" rows="3" name="comment"></textarea>
-                  </div>
-                </div>
-                <div class="field">
-                  <label class="label" for="rating">Your rating</lable>
-                    <div class="control">
-                      <div class="select">
-                        <select name="rating">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="button is-info">Submit</button>
-                </form>
-              </div>
-            </div>
-            <% } %>
-                <% cocktail.comments.forEach((comment) => { %>
-
-                <div class="box">
-                  <% if(comment.belongsTo(locals.currentUser)) { %>
-                  <form action="/cocktails/<%= cocktail.id %>/comments/<%= comment.id %>" method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    </form>
-                  <% } %>
-
-                  <p>Added by: <strong> <%= comment.user.username %></strong></p>
-                  <p><%= comment.comment %><p>
-                  <p>Rating: <%= comment.rating %>/5<p>
-                </div>
-                <% }) %>
-
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="<%= comment.user.image %>" alt="Image">
+            </figure>
           </div>
-        </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= comment.user.username %></strong>
+              <br>
+                <%= comment.comment %>
+              </p>
+              <p>Rating: <%= comment.rating %>/5<p>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</div>
