@@ -1,24 +1,103 @@
-img {
-  width: 200px;
-  height: 200px;
+html {
+
+  img {
+    max-width: 100%;
+  }
+
 }
-.navbar {
-  border-bottom: 2px solid gray;
-}
-.logo {
-  width: 70px;
-  height: 70px;
-}
+// body {
+//   background-image: url("../images/EclipseCocktails1.png");
+//   background-position: center;
+//   background-size: cover;
+//
+// }
 
 body {
-  color: tomato;
+
+  color: white;
+  font-family: 'Lora', serif;
+
+  a{
+    color: #313030;
+    font-size: 16px;
+
+    a:hover {
+      color: lighten( black, 40% )
+    }
+  }
+
+  nav span a{
+    color: white;
+  }
+
+  .navbar {
+    border-bottom: 2px solid gray;
+    background-color: gray;
+    color: white;
+    .logo {
+      width: 70px;
+      height: 70px;
+      .navbar-item a{
+        color: white;
+      }
+    }
+  }
+
+  .hero {
+    height: 400px;
+    background-image: url('../images/background1.jpg');
+    background-position: center;
+    background-size: cover;
+    h1 {
+      font-size: 50px;
+      opacity: 0.9;
+
+      color: white;
+    }
+  }
+  .section{
+    margin-top: 20px;
+  }
+  .column {
+    padding: 20px;
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      text-align: center;}
+
+  }
+.show-image {
+  padding: 15px;
 }
-.container {
-  padding-top: 60px;
+.comment {
+  height: 300px;
+  overflow: scroll;
+  margin-top: 20px;
+}
+
 }
 p {
   font-size: 12px;
 }
-.column {
-  padding: 5px;
+// .section {
+//   background-color: gray;
+// }
+.buttons {
+  margin: 0 auto;
+}
+
+.cocktail-img {
+  margin: 5px auto;
+  display: block;
+}
+
+.cocktail-name {
+  margin-bottom: 20px;
+}
+
+.cocktail-tile {
+  background-position: center;
+  background-size: cover;
+  &.image.is-4by3 {
+    padding-top: 100%;
+  }
 }

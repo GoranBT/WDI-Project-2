@@ -4,7 +4,7 @@
     <%# Logo%>
 
     <a class="navbar-item" href="/">
-      <span><i class="fa fa-glass" aria-hidden="true"></i>Mix IT</span>
+      <span><i class="fa fa-glass" aria-hidden="true"></i> Mix-IT.com</span>
       &nbsp;
     </a>
 
@@ -18,17 +18,15 @@
   </div>
   <div id="mobile-menu" class="navbar-menu">
     <div class="navbar-end">
-      <a class="navbar-item is-centered" href="/spirits">Spirits</a>
+      <a class="navbar-item" href="/spirits">Spirits</a>
       <% if(!locals.isAuthenticated) { %>
         <a class="navbar-item" href="/register">Register</a>
         <a class="navbar-item" href="/login">Login</a>
       <% } else { %>
 
-
-
-        <a class="navbar-item" href="/cocktails">Cocktails</a>
-        <a class="navbar-item" href="/spirits/new">New Spirit</a>
-        <a class="navbar-item" href="/cocktails/new">New Cocktail</a>
+        <a class="navbar-item navbar-start" href="/cocktails">Cocktails</a>
+        <a class="navbar-item navbar-start" href="/spirits/new">New Spirit</a>
+        <a class="navbar-item navbar-start" href="/cocktails/new">New Cocktail</a>
         <a class="navbar-item" href="/users/<%= locals.currentUser.id %>"><i class="fa fa-user" aria-hidden="true"></i></a>
         <a class="navbar-item" href="/logout">Logout</a>
       <% } %>

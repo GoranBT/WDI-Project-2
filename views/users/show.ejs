@@ -1,32 +1,55 @@
 
-<h3 class="title"><%= user.username %></h3>
-  <p><%= user.email %></p>
-  <br>
-  <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
-    <form method="POST" action="/users/<%= user.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <a class="button is-primary" href="/users/<%= user.id %>/edit">Edit</a>
-      <button class="button is-danger">Delete</button>
-    </form>
-  <% } %>
-  <p><img class="image is-64x64" src="<%= user.image %>"</p>
-  <h4 class="title">Cocktails Added</h4>
-  <div class="columns is-multiline">
-    <% user.cocktails.forEach(cocktail => { %>
-      <div class="column is-one-quarter-desktop is-half-tablet">
-        <a href="/cocktails/<%= cocktail.id %>">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image">
-                <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
-              </figure>
-            </div>
-            <div class="card-content">
-              <h3 class="title"><%= cocktail.name %></h3>
-              <h4 class="subtitle"><%= cocktail.description %></h4>
-            </div>
-          </div>
-        </a>
+<div class="columns">
+  <div class="column is-4 box">
+
+      <div class="card-image">
+        <figure>
+          <img src="<%= user.image %>" alt="user image">
+        </figure>
       </div>
-    <% }) %>
-  </div>
+<br>
+
+          <div class="user-wrap">
+            <hr>
+            <p class="title is-4"><%= user.username %></p>
+            <hr>
+            <p class="subtitle is-6"><%= user.email %></p>
+          </div>
+
+
+<br>
+  <center><div class="buttons">
+    <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
+      <form method="POST" action="/users/<%= user.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <a class="button is-primary is-half" href="/users/<%= user.id %>/edit">Edit</a>
+      <button class="button is-danger is-half">Delete</button>
+      </form>
+    <% } %>
+  </div></center>
+    </div>
+
+    <div class="column is-offset-1 is-half">
+    <h4 class="title has-text-centered">Cocktails Added</h4>
+    <hr>
+    <div class="columns is-multiline">
+      <% user.cocktails.forEach(cocktail => { %>
+        <div class="column auto-desktop is-half-tablet">
+          <a href="/cocktails/<%= cocktail.id %>">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image">
+              <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
+            </figure>
+          </div>
+          <div class="card-content">
+            <p class="title is-5"><%= cocktail.name %></p>
+            <p class="title is-6"><%= cocktail.description %></p>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% }) %>
+</div>
+</div>
+</div>

@@ -1,10 +1,11 @@
 
-<div class="columns is-multiline">
+<h1>Choose your spirit</h1>
 
-  
+
+<div class="columns is-multiline box">
 
   <% spirits.forEach(spirit => { %>
-    <div class="column is-one-quarter-desktop is-half-tablet">
+    <div class="column is-one-third-desktop is-half-tablet">
       <div class="card">
 
 
@@ -20,7 +21,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-5"><a href="/spirits/<%= spirit.id %>"><%= spirit.name %></a></p>
+              <p class="title has-text-centered is-5"><a href="/spirits/<%= spirit.id %>"><%= spirit.name %></a></p>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@
     <p><%= spirit.description %></p>
   </div>
   <div class="column">
+
     <% if(spirit.user) { %>
       <p>Added by: <strong> <%= spirit.user.username %></strong></p>
 
@@ -21,9 +22,10 @@
     <% } %>
   </div>
 </div>
-
+<div class="columns is-multiline">
 <% spirit.cocktails.forEach(cocktail => { %>
-  <div class="column is-one-quarter-desktop is-half-tablet">
+
+  <div class="column is-one-third-desktop is-half-tablet">
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
@@ -33,10 +35,12 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-5"><a href="/cocktail/<%= cocktail.id %>"><%= cocktail.name %></a></p>
+            <p class="title is-5 has-text-centered"><a href="/cocktail/<%= cocktail.id %>"><%= cocktail.name %></a></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 <% }) %>
+</div>

@@ -22,7 +22,7 @@ function index(req, res) {
 function show (req, res) {
   Spirit
     .findById(req.params.id)
-    .populate('cocktails')
+    .populate('cocktails user')
     .exec()
     .then(spirit => {
       // console.log(spirit);

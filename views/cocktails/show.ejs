@@ -1,21 +1,28 @@
+<div class="box">
 
-<div class="box columns">
+
+<div class="cocktail-name has-text-centered">
+  <p class="is-size-4"><%= cocktail.name %></p>
+  <p class="is-size-5">Main Spirit: <%= cocktail.mainSpirit.name %></p>
+</div>
+
+<div class="columns">
+
+
 
   <%# left column%>
 
   <div class="column is-half">
-    <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
-    <h1 class="title"><%= cocktail.name %></h1>
 
-    <label>Main Spirit</label>
-
-      <p class="subtitle"><%= cocktail.mainSpirit.name %></p>
+    <div>
+      <img class="is-centered cocktail-img" src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
+    </div>
     <div class="box">
-      <p>Recipe</p>
+      <pclass="is-size-5">Recipe:</p>
       <p><%= cocktail.recipe %></p>
     </div>
     <div class="box">
-      <p>Description</p>
+      <pclass="is-size-5">Description</p>
       <p><%= cocktail.description %></p>
     </div>
 
@@ -39,44 +46,10 @@
 
   <div class="column is-half">
 
-    <%#making comments section %>
-    <% if(locals.isAuthenticated) { %>
-      <div class="form">
-        <div class="commentAdder box">
-          <form method="POST" action="/cocktails/<%= cocktail.id %>/comments">
-
-            <div class="field">
-              <label class="label" for="comment">Your comment:</label>
-                <div class="control">
-                  <textarea class="textarea" rows="3" name="comment"></textarea>
-                  </div>
-                  </div>
-                  <div class="field">
-                  <label class="label" for="rating">Your rating</lable>
-                  <div class="control">
-                  <div class="select">
-                    <select name="rating">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            <button class="button is-info">Submit</button>
-          </form>
-        </div>
-      </div>
-    <% } %>
-
-
-
-
-
-    <div class="box">
-
+      <div class="box comment">
+        <% if(cocktail.comments.length === 0) { %>
+          <h3>No comments yet</h3>
+        <% } %>
       <% cocktail.comments.forEach((comment) => { %>
         <% if(comment.belongsTo(locals.currentUser)) { %>
           <form action="/cocktails/<%= cocktail.id %>/comments/<%= comment.id %>" method="POST">
@@ -103,5 +76,42 @@
         </article>
       <% }) %>
     </div>
+
+
+    <%#making comments section %>
+    <% if(locals.isAuthenticated) { %>
+      <div class="form">
+        <div class="commentAdder box">
+          <form method="POST" action="/cocktails/<%= cocktail.id %>/comments">
+
+            <div class="field">
+              <label class="label" for="comment">Your comment:</label>
+                <div class="control">
+                  <textarea class="textarea" rows="3" name="comment"></textarea>
+                  </div>
+                  </div>
+                  <div class="field">
+                  <label class="label" for="rating">Your rating</lable>
+                  <div class="control">
+                  <div class="select">
+                    <select name="rating">
+                      <option disabled selected>Please select</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            <button class="button is-info">Submit</button>
+          </form>
+        </div>
+      </div>
+    <% } %>
+
+
   </div>
+</div>
 </div>
