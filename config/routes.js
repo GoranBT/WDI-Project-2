@@ -26,6 +26,9 @@ router.route('/cocktails/:id')
 router.route('/cocktails/:id/edit')
   .get(secureRoute, cocktails.edit);
 
+router.route('/cocktails/:id/favorite')
+  .post(secureRoute, cocktails.favorite);
+
 // Comments  routes
 router.post('/cocktails/:id/comments', cocktails.commentsCreate);
 
@@ -51,6 +54,7 @@ router.route('/spirits/:id/edit')
   .get(secureRoute, spirits.edit);
 
 
+
 // Register
 
 router.route('/register')
@@ -68,7 +72,12 @@ router.get('/logout', sessions.delete);
 // User
 
 router.route('/users/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(secureRoute, users.update)
+  .delete(secureRoute, users.delete);
+
+router.route('/users/:id/edit')
+  .get(secureRoute, users.edit);
 
 
 

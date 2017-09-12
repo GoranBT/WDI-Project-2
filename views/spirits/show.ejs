@@ -9,6 +9,7 @@
   <div class="column">
     <% if(spirit.user) { %>
       <p>Added by: <strong> <%= spirit.user.username %></strong></p>
+
     <% } %>
     <br>
     <% if(locals.isAuthenticated && spirit.user && spirit.user.id === locals.currentUser.id) { %>

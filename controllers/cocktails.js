@@ -140,7 +140,21 @@ function cocktailCommentsCreate(req, res) {
       res.status(500).render('error', { err });
     });
 }
+// This requires the user's favorites to be populated (see `lib/userAuth.js`)
+function cocktailsFavorite(req, res) {
+  // if the selected cheese is not in the user's favorites
+  if(!req.currentUser.favorites.find(cocktail => cocktail.id === req.params.id)) {
+    // add the cheese id to the user's favorites
+    req.currentUser.favorites.push(req.params.id);
+  } else {
+    // remove the cheese from the user's favorites
+    req.currentUser.favorites = req.currentUser.favorites.filter(cocktail => cocktail.id !== req.params.id);
+  }
 
+  // save the user
+  req.currentUser.save()
+    .then(() => res.redirect('back'));
+}
 
 
 // exporting functions
@@ -154,5 +168,6 @@ module.exports = {
   update: cocktailUpdate,
   delete: cocktailDelete,
   commentsDelete: cocktailCommentsDelete,
-  commentsCreate: cocktailCommentsCreate
+  commentsCreate: cocktailCommentsCreate,
+  favorite: cocktailsFavorite
 };

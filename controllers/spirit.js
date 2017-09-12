@@ -34,7 +34,7 @@ function show (req, res) {
       res.render('spirits/show', { spirit });
       // });
     })
-    .catch(err => res.resnder('error', {err}));
+    .catch(err => res.render('error', {err}));
 }
 
 // spirits show form

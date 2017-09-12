@@ -1,6 +1,14 @@
-<h1>I'm the user</h1>
+
 <h3 class="title"><%= user.username %></h3>
   <p><%= user.email %></p>
+  <br>
+  <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
+    <form method="POST" action="/users/<%= user.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <a class="button is-primary" href="/users/<%= user.id %>/edit">Edit</a>
+      <button class="button is-danger">Delete</button>
+    </form>
+  <% } %>
   <p><img class="image is-64x64" src="<%= user.image %>"</p>
   <h4 class="title">Cocktails Added</h4>
   <div class="columns is-multiline">
