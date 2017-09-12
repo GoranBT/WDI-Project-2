@@ -8,7 +8,7 @@
     "postinstall": "gulp build",
     "seed": "node db/seeds",
     "start": "node index.js",
-    "postinstall" "gulp build"
+    "postinstall": "gulp build"
   },
   "engines": {
     "node": "8.x.x"

@@ -1,15 +1,4 @@
 
-<form class="search-block ingredients" method="GET" action="/cocktails">
-
-  <select class="input is-primary" required name="cocktails.name">
-    <option selected disabled>Please select</option>
-    <% cocktails.forEach(cocktail => { %>
-      <option><%= cocktail.name %></option>
-    <% }); %>
-
-  </select>
-  <button class="button is-primary search-button">Search</button>
-</form>
 
 <div class="columns is-multiline">
 
