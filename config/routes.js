@@ -8,7 +8,7 @@ const sessions = require('../controllers/sessions');
 const users = require('../controllers/users');
 
 //  Home page
-router.get('/', (req, res) => res.render('home'));
+router.get('/', (req, res) => res.render('home', { isHomepage: true}));
 
 // Cocktails routes
 router.route('/cocktails')

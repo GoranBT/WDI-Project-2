@@ -2,8 +2,8 @@
 
 
 <div class="cocktail-name has-text-centered">
-  <p class="is-size-4"><%= cocktail.name %></p>
-  <p class="is-size-5">Main Spirit: <%= cocktail.mainSpirit.name %></p>
+  <p class="is-size-2"><%= cocktail.name %></p>
+  <p class="is-size-3">Main Spirit: <%= cocktail.mainSpirit.name %></p>
 </div>
 
 <div class="columns">
@@ -18,11 +18,11 @@
       <img class="is-centered cocktail-img" src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
     </div>
     <div class="box">
-      <pclass="is-size-5">Recipe:</p>
+      <p class="is-size-5">Recipe:</p>
       <p><%= cocktail.recipe %></p>
     </div>
     <div class="box">
-      <pclass="is-size-5">Description</p>
+      <p class="is-size-5">Description</p>
       <p><%= cocktail.description %></p>
     </div>
 
@@ -33,8 +33,8 @@
     <% if(locals.isAuthenticated && cocktail.user && cocktail.user.id === locals.currentUser.id) { %>
       <form method="POST" action="/cocktails/<%= cocktail.id %>">
         <input type="hidden" name="_method" value="DELETE">
-        <a class="button is-primary" href="/cocktails/<%= cocktail.id %>/edit">Edit</a>
-        <button class="button is-danger">Delete</button>
+        <a class="button is-info is-outlined" href="/cocktails/<%= cocktail.id %>/edit">Edit</a>
+        <button class="button is-outlined">Delete</button>
       </form>
     <% } %>
   </div>

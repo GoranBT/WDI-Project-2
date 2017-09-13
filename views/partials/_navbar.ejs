@@ -14,6 +14,8 @@
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
   <div id="mobile-menu" class="navbar-menu">
@@ -27,7 +29,7 @@
         <a class="navbar-item navbar-start" href="/cocktails">Cocktails</a>
         <a class="navbar-item navbar-start" href="/spirits/new">New Spirit</a>
         <a class="navbar-item navbar-start" href="/cocktails/new">New Cocktail</a>
-        <a class="navbar-item" href="/users/<%= locals.currentUser.id %>"><i class="fa fa-user" aria-hidden="true"></i></a>
+        <a class="navbar-item" href="/users/<%= locals.currentUser.id %>"><i class="fa fa-user" aria-hidden="true"> </i><%= locals.username %></a>
         <a class="navbar-item" href="/logout">Logout</a>
       <% } %>
     </div>

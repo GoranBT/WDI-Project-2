@@ -1,41 +1,43 @@
 <div class="box columns is multiline">
   <div class="column">
-    <img src="<%= spirit.image %>" alt="<%= spirit.name %>">
-  </div>
-  <div class="column">
-    <h1 class="title"><%= spirit.name %></h1>
-    <p><%= spirit.description %></p>
-  </div>
-  <div class="column">
-
-    <% if(spirit.user) { %>
+    <img src="<%= spirit.image %>" alt="<%= spirit.name %>"><% if(spirit.user) { %>
       <p>Added by: <strong> <%= spirit.user.username %></strong></p>
-
     <% } %>
-    <br>
+
+
+  </div>
+  <div class="column">
+    <h1 class="title is-size-2"><%= spirit.name %></h1>
+    <p class="is-size-5"><%= spirit.description %></p>
     <% if(locals.isAuthenticated && spirit.user && spirit.user.id === locals.currentUser.id) { %>
       <form method="POST" action="/spirits/<%= spirit.id %>">
         <input type="hidden" name="_method" value="DELETE">
-        <a class="button is-primary" href="/spirits/<%= spirit.id %>/edit">Edit</a>
-        <button class="button is-danger">Delete</button>
+        <a class="button is-info is-outlined" href="/spirits/<%= spirit.id %>/edit">Edit</a>
+        <button class="button is-outlined">Delete</button>
       </form>
     <% } %>
   </div>
+
 </div>
+<div class="box">
+
+
 <div class="columns is-multiline">
 <% spirit.cocktails.forEach(cocktail => { %>
 
-  <div class="column is-one-third-desktop is-half-tablet">
+  <div class="column is-3-desktop is-half-tablet">
     <div class="card">
       <div class="card-image">
-        <figure class="image is-4by3">
-          <a href="/cocktails/<%= cocktail.id %>"><img src="<%= cocktail.image %>"></a>
+        <a href="/cocktails/<%= cocktail.id %>">
+        <figure class="image is-4by3 cocktail-tile" style="background-image:url(<%= cocktail.image %>)">
         </figure>
+        </a>
       </div>
+
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-5 has-text-centered"><a href="/cocktail/<%= cocktail.id %>"><%= cocktail.name %></a></p>
+            <p class="title is-5 has-text-centered"><a href="/cocktails/<%= cocktail.id %>"><%= cocktail.name %></a></p>
           </div>
         </div>
       </div>
@@ -43,4 +45,5 @@
   </div>
 
 <% }) %>
+</div>
 </div>

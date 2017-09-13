@@ -1,55 +1,51 @@
 
 <div class="columns">
   <div class="column is-4 box">
-
-      <div class="card-image">
-        <figure>
-          <img src="<%= user.image %>" alt="user image">
-        </figure>
-      </div>
-<br>
-
-          <div class="user-wrap">
-            <hr>
-            <p class="title is-4"><%= user.username %></p>
-            <hr>
-            <p class="subtitle is-6"><%= user.email %></p>
-          </div>
-
-
-<br>
-  <center><div class="buttons">
-    <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
-      <form method="POST" action="/users/<%= user.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <a class="button is-primary is-half" href="/users/<%= user.id %>/edit">Edit</a>
-      <button class="button is-danger is-half">Delete</button>
-      </form>
-    <% } %>
-  </div></center>
+    <div class="card-image">
+      <figure>
+        <img src="<%= user.image %>" alt="user image">
+      </figure>
     </div>
+    <br>
+    <div class="user-wrap">
+      <hr>
+      <p class="title is-4"><%= user.username %></p>
+      <hr>
+      <p class="subtitle is-6"><%= user.email %></p>
+    </div>
+    <br>
+      <center><div class="buttons">
+      <% if(locals.isAuthenticated && user.id === locals.currentUser.id) { %>
+        <form method="POST" action="/users/<%= user.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <a class="button is-info is-outlined" href="/users/<%= user.id %>/edit">Edit</a>
+          <button class="button is-outlined">Delete</button>
+        </form>
+      <% } %>
+      </div></center>
+  </div>
 
-    <div class="column is-offset-1 is-half">
+  <div class="column is-offset-1 is-half">
     <h4 class="title has-text-centered">Cocktails Added</h4>
-    <hr>
+  <hr>
     <div class="columns is-multiline">
       <% user.cocktails.forEach(cocktail => { %>
         <div class="column auto-desktop is-half-tablet">
           <a href="/cocktails/<%= cocktail.id %>">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image">
-              <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
-            </figure>
-          </div>
-          <div class="card-content">
-            <p class="title is-5"><%= cocktail.name %></p>
-            <p class="title is-6"><%= cocktail.description %></p>
-          </div>
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="<%= cocktail.image %>" alt="<%= cocktail.name %>">
+                </figure>
+              </div>
+              <div class="card-content">
+                <p class="title is-5"><%= cocktail.name %></p>
+                <p class="title is-6"><%= cocktail.description %></p>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
+      <% }) %>
     </div>
-  <% }) %>
-</div>
-</div>
+  </div>
 </div>

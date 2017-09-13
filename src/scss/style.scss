@@ -1,63 +1,97 @@
 html {
 
-  img {
-    max-width: 100%;
+    img {
+      max-width: 100%;
+    }
+    text-align: center;
+.input {
+  border-color: gray;
+  .input:hover  {
+    border-color: lighten( gray, 40% );
+    }
   }
 
 }
-// body {
-//   background-image: url("../images/EclipseCocktails1.png");
-//   background-position: center;
-//   background-size: cover;
-//
-// }
-
-body {
-
+.isHomepage {
+  background-image: url(https://i.imgur.com/sJCBw95.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+.navbar-menu {
+  background-color: #202021;
   color: white;
-  font-family: 'Lora', serif;
-
-  a{
-    color: #313030;
-    font-size: 16px;
-
-    a:hover {
-      color: lighten( black, 40% )
-    }
-  }
-
-  nav span a{
-    color: white;
-  }
-
-  .navbar {
-    border-bottom: 2px solid gray;
+  .navbar-menu.is-active {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
     background-color: gray;
+    color: #424344;
+  }
+}
+
+a{
+  color: #313030;
+  font-size: 16px;
+
+  a:hover {
+    color: lighten( black, 20% )
+  }
+}
+.columns, .section {
+  background-color: #fcfcfc;
+}
+body {
+  font-family: 'Lora', serif;
+  background-color: #fcfcfc;
+    .navbar {
+
+      background-color:  #202021;
+      color: white;
+      .logo {
+        width: 70px;
+        height: 70px;
+
+      }
+      .navbar-item {
+        color: white;
+        border-right: 1px solid white;
+      }
+      .navbar-item:hover {
+        color: #424344;
+      }
+    }
+
+    nav span a{
     color: white;
-    .logo {
-      width: 70px;
-      height: 70px;
-      .navbar-item a{
+    }
+
+    .hero.spirit {
+      height: 400px;
+      background-image: url('https://static1.squarespace.com/static/539b399fe4b06d56f98ad0ec/539b6a4be4b075c4c6ba7311/53b6c851e4b02ad8bc79b225/1413416001835/barwareT%26C.jpg?format=1000w');
+      background-position: center;
+      background-size: cover;
+      h1 {
+        font-size: 50px;
+        opacity: 0.9;
+        text-transform: uppercase;
         color: white;
       }
     }
-  }
 
   .hero {
     height: 400px;
-    background-image: url('../images/background1.jpg');
+    background-image: url('http://www.joesateast.com/sites/default/files/cocktails-at-joes-at-east.jpg');
     background-position: center;
     background-size: cover;
     h1 {
       font-size: 50px;
       opacity: 0.9;
+      text-transform: uppercase;
 
       color: white;
     }
   }
-  .section{
-    margin-top: 20px;
-  }
+
   .column {
     padding: 20px;
     .card {
@@ -78,9 +112,7 @@ body {
 p {
   font-size: 12px;
 }
-// .section {
-//   background-color: gray;
-// }
+
 .buttons {
   margin: 0 auto;
 }
@@ -97,7 +129,20 @@ p {
 .cocktail-tile {
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   &.image.is-4by3 {
     padding-top: 100%;
+  }
+}
+.input {
+  color: gray;
+}
+#homeform {
+  color: white;
+}
+@media (max-width: 1005px) {
+  .navbar-menu {
+    background-color: gray;;
+    color: white;
   }
 }

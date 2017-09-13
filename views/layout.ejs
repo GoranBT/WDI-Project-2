@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>MixIT</title>
     <%- include ./partials/_stylesheets %>
   </head>
 
-  <body>
+  <body class="<% if (locals.isHomepage) { %>isHomepage<% } %>">
 
     <%# include navbar%>
     <%- include ./partials/_navbar %>
@@ -17,13 +18,13 @@
     <% } %>
 
     <%# bulma container%>
-    <main class="container">
+    <div class="container">
 
     <%- body %>
 
-    </main>
+  </div>
 
-    <% if(!locals.isHomepage) { %></main><% } %>
+  <% if(!locals.isHomepage) { %></main><% } %>
 
     <%- include ./partials/_scripts %>
   </body>

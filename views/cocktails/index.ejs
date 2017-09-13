@@ -1,36 +1,30 @@
 
 <div class="hero">
-<h1 class="has-text-centered">MIXOLOGIST'S SELECTION</h1>
+  <h1 class="has-text-centered is-capitalized">Mixologist's Selection</h1>
 </div>
 <div class="section box">
-<div class="columns is-multiline">
+  <div class="columns is-multiline">
 
-  <% cocktails.forEach(cocktail => { %>
+    <% cocktails.forEach(cocktail => { %>
 
-    <div class="column is-one-third-desktop is-half-tablet">
-      <div class="card">
+      <div class="column is-one-third-desktop is-half-tablet">
+        <div class="card">
+          <div class="card-image">
+            <a href="/cocktails/<%= cocktail.id %>">
+            <figure class="image is-4by3 cocktail-tile" style="background-image:url(<%= cocktail.image %>)">
+            </figure>
+            </a>
+          </div>
 
-
-
-        <div class="card-image">
-        <a href="/cocktails/<%= cocktail.id %>">
-          <figure class="image is-4by3 cocktail-tile" style="background-image:url(<%= cocktail.image %>)">
-          </figure>
-          </a>
-        </div>
-
-
-
-
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-5 has-text-centered"><a href="/cocktails/<%= cocktail.id %>"><%= cocktail.name %></a></p>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-5 has-text-centered"><a href="/cocktails/<%= cocktail.id %>"><%= cocktail.name %></a></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  <% }) %>
-</div>
+    <% }) %>
+  </div>
 </div>
