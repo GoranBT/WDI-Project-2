@@ -42,8 +42,14 @@ function usersCheckEmail(req, res) {
     .findOne({ email: req.query.email })
     .exec()
     .then(user => res.json(!user));
+}
 
-
+function usersCheckUsername(req, res) {
+  if(!req.query.username) return res.json(true);
+  User
+    .findOne({ username: req.query.username })
+    .exec()
+    .then(user => res.json(!user));
 }
 
 module.exports = {
@@ -51,5 +57,6 @@ module.exports = {
   edit: usersEdit,
   update: usersUpdate,
   delete: usersDelete,
-  checkEmail: usersCheckEmail
+  checkEmail: usersCheckEmail,
+  checkUsername: usersCheckUsername
 };

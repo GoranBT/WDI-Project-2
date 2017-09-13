@@ -9,10 +9,14 @@ $burger.on('click', () => {
 
 $('form#register').validate({
   rules: {
-    email: { required: true, email: true, remote: '/checkemail'}
+    email: { email: true, remote: '/checkemail' },
+    username: { remote: '/checkusername' },
+    passwordConfirmation: { equalTo: '[name=password]' }
   },
   messages: {
-    email: {required: 'Please enter a valid email address', email: 'Please enter a valid email address', remote: 'This email is already registered' }
+    email: { email: 'Please enter a valid email address', remote: 'This email is already registered' },
+    username: { remote: 'This username is already registered' },
+    passwordConfirmation: { equalTo: 'Passwords must match' }
   }
 });
 
