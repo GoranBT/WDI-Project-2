@@ -79,7 +79,7 @@ router.route('/users/:id')
 router.route('/users/:id/edit')
   .get(secureRoute, users.edit);
 
-
+router.get('/checkemail', users.checkEmail);
 
 
 // exporting router

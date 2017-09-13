@@ -36,9 +36,20 @@ function usersDelete(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+function usersCheckEmail(req, res) {
+  if(!req.query.email) return res.json(true);
+  User
+    .findOne({ email: req.query.email })
+    .exec()
+    .then(user => res.json(!user));
+
+
+}
+
 module.exports = {
   show: usersShow,
   edit: usersEdit,
   update: usersUpdate,
-  delete: usersDelete
+  delete: usersDelete,
+  checkEmail: usersCheckEmail
 };
