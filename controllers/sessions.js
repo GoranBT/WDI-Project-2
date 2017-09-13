@@ -14,6 +14,7 @@ function sessionsCreate(req, res) {
       }
       req.session.userId = user.id;
       req.currentUser = user;
+      req.flash('success', `Welcome back ${user.username}`);
       res.redirect('/');
     });
 }
